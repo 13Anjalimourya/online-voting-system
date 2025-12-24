@@ -1,0 +1,138 @@
+{% extends 'voting/base.html' %}
+
+{% block title %}Verify OTP - Online Voting Portal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card p-5" style="border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+            <div class="text-center mb-4">
+                <div class="gradient-header mx-auto mb-3">
+                    <i class="bi bi-key" style="font-size: 2rem;"></i>
+                </div>
+                <h2>🔐 OTP Verification</h2>
+                <p class="text-muted">Enter the 6-digit OTP sent to your registered mobile/email</p>
+            </div>
+
+            <form method="post" id="otpForm">
+                {% csrf_token %}
+
+                <!-- OTP Input (Django form field) -->
+                <div class="mb-4">
+                   <input type="text" name="otp" maxlength="6" placeholder="Enter OTP" required>
+                    {% if form.otp.errors %}
+                        <div class="text-danger mt-2">
+                            {{ form.otp.errors }}
+                        </div>
+                    {% endif %}
+                   
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-3 mb-3">
+                    <i class="bi bi-check-circle me-2"></i> Verify & Login
+                </button>
+            </form>
+
+            <div class="timer mt-2 text-center">
+                OTP expires in <span id="countdown">60</span> seconds
+                <div class="progress mt-1" style="height: 6px; border-radius: 3px;">
+                    <div id="progressBar" class="progress-bar bg-primary" role="progressbar" style="width: 100%;"></div>
+                </div>
+            </div>
+
+            <div class="resend mt-2 text-center">
+                Didn’t receive OTP? 
+                <a href="{% url 'resend-otp' %}" id="resendLink" style="pointer-events: none; opacity: 0.5;">Resend OTP</a>
+            </div>
+
+            <div class="attempts mt-2 text-center text-danger">
+                Remaining attempts: <span id="attemptsLeft">3</span>
+            </div>
+
+            <a href="{% url 'home' %}" class="btn btn-outline-secondary w-100 mt-3">
+                <i class="bi bi-arrow-left me-2"></i> Back to Login
+            </a>
+        </div>
+
+        <div class="footer text-center mt-3" style="font-size: 12px; color: #888;">
+            © 2025 Election Commission of India
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Auto-focus OTP input
+    document.querySelector('input[name="otp"]').focus();
+
+    // Countdown Timer & Progress Bar
+    let timeLeft = 60;
+    const countdownEl = document.getElementById("countdown");
+    const progressBar = document.getElementById("progressBar");
+    const resendLink = document.getElementById("resendLink");
+
+    const timer = setInterval(() => {
+        timeLeft--;
+        countdownEl.innerText = timeLeft;
+        progressBar.style.width = (timeLeft / 60 * 100) + "%";
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            resendLink.style.pointerEvents = "auto";
+            resendLink.style.opacity = "1";
+            countdownEl.innerText = "0";
+            progressBar.style.width = "0%";
+        }
+    }, 1000);
+
+    // OTP Attempts Tracking
+    let maxAttempts = 3;
+    let attemptsLeft = maxAttempts;
+
+    const form = document.getElementById("otpForm");
+    const attemptsDisplay = document.getElementById("attemptsLeft");
+
+    form.addEventListener("submit", (e) => {
+        attemptsLeft--;
+        if (attemptsLeft <= 0) {
+            e.preventDefault();
+            alert("You have entered wrong OTP 3 times. Your account is blocked.");
+            window.location.href = "{% url 'home' %}";
+        } else {
+            attemptsDisplay.innerText = attemptsLeft;
+        }
+    });
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f8fafc;
+    }
+
+    .card input {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        letter-spacing: 4px;
+        text-align: center;
+        margin-top: 15px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .card button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+        background: linear-gradient(90deg, #6a5cff, #ff7a5c);
+    }
+</style>
+{% endblock %}

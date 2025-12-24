@@ -1,0 +1,13 @@
+{% extends 'voting/base.html' %}
+
+{% block title %}Profile - Online Voting Portal{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Welcome, {{ voter.full_name }}</h2>
+    <p><strong>Voter ID:</strong> {{ voter.voter_id }}</p>
+    <p><strong>Email:</strong> {{ voter.email }}</p>
+    <p><strong>Polling Station:</strong> {{ voter.polling_station }}</p>
+    <a href="{% url 'logout' %}" class="btn btn-danger mt-3">Logout</a>
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'voting/base.html' %}
+
+{% block title %}Login - Online Voting Portal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <div class="gradient-header mx-auto mb-3">
+                        <i class="bi bi-person-check"></i>
+                    </div>
+                    <h2>Voter Login</h2>
+                    <p class="text-muted">Enter your Voter ID to begin</p>
+                </div>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="{{ form.voter_id.id_for_label }}" class="form-label">Voter ID</label>
+                        {{ form.voter_id }}
+                        {% if form.voter_id.errors %}
+                            <div class="text-danger mt-2">
+                                {{ form.voter_id.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-3 mb-3">
+                        <i class="bi bi-arrow-right-circle me-2"></i>
+                        Get OTP
+                    </button>
+                </form>
+                
+                <hr class="my-4">
+                
+                <div class="alert alert-info mb-0">
+                    <h6 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Demo Voter IDs:</h6>
+                    <ul class="mb-0">
+                        <li><strong>VOT123456</strong> - Rajesh Kumar</li>
+                        <li><strong>VOT789012</strong> - Priya Sharma</li>
+                        <li><strong>VOT345678</strong> - Amit Patel</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features -->
+        <div class="row mt-4 g-3">
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="bi bi-shield-check text-primary" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Secure</h6>
+                        <small class="text-muted">OTP verified</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="bi bi-clock text-success" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Fast</h6>
+                        <small class="text-muted">Quick process</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center h-100">
+                    <div class="card-body">
+                        <i class="bi bi-geo-alt text-warning" style="font-size: 2rem;"></i>
+                        <h6 class="mt-2">Anywhere</h6>
+                        <small class="text-muted">Vote remotely</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

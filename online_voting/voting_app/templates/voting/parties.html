@@ -1,0 +1,103 @@
+{% extends 'voting/base.html' %}
+
+{% block title %}Voting Booth - Online Voting Portal{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+
+        <!-- Voter Info Card -->
+        <div class="card mb-4">
+            <div class="card-body p-4">
+                <h4 class="mb-2">Welcome, {{ voter.full_name }}</h4>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <small class="text-muted d-block">Voter ID</small>
+                        <strong>{{ voter.voter_id }}</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <small class="text-muted d-block">Constituency</small>
+                        <strong>{{ voter.constituency }}</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <small class="text-muted d-block">Polling Station</small>
+                        <strong>{{ voter.polling_station }}</strong>
+                    </div>
+                    <div class="col-md-6">
+                        <small class="text-muted d-block">Age</small>
+                        <strong>{{ voter.age }} years</strong>
+                    </div>
+                    <div class="col-12">
+                        <small class="text-muted d-block">Address</small>
+                        <strong>{{ voter.address }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voting Header -->
+        <div class="card mb-4">
+            <div class="card-body p-4">
+                <h3 class="mb-2">
+                    <i class="bi bi-check2-square text-primary me-2"></i>
+                    Cast Your Vote
+                </h3>
+                <p class="text-muted mb-0">Select your preferred candidate for <strong>{{ voter.constituency }}</strong></p>
+            </div>
+        </div>
+
+        <!-- Candidates / Parties -->
+        {% if parties %}
+            <div class="row g-4">
+                {% for party in parties %}
+                <div class="col-md-6">
+                    <div class="card h-100" style="border: 2px solid {{ party.color }};">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0">
+                                    <div style="width: 80px; height: 80px; background: {{ party.color }}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
+                                        {{ party.symbol|slice:":1"|upper }}
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h4 class="mb-1">{{ party.name }}</h4>
+                                    <p class="text-muted mb-2">{{ party.description }}</p>
+                                    <span class="badge" style="background: {{ party.color }};">{{ party.symbol }}</span>
+                                </div>
+                            </div>
+                            <form method="post" onsubmit="return confirm('Are you sure you want to vote for {{ party.name }}? This action cannot be undone.');">
+                                {% csrf_token %}
+                                <input type="hidden" name="party_id" value="{{ party.id }}">
+                                <button type="submit" class="btn btn-primary w-100 py-3" style="background: {{ party.color }}; border-color: {{ party.color }};">
+                                    <i class="bi bi-check-circle me-2"></i>
+                                    Vote for {{ party.name }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card">
+                <div class="card-body p-5 text-center">
+                    <i class="bi bi-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+                    <h4 class="mt-3">No Candidates Available</h4>
+                    <p class="text-muted">There are no candidates registered for your constituency yet.</p>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Important Notice -->
+        <div class="alert alert-warning mt-4">
+            <h6 class="alert-heading"><i class="bi bi-exclamation-triangle me-2"></i>Important Notice:</h6>
+            <ul class="mb-0">
+                <li>Your vote is confidential and anonymous</li>
+                <li>You can vote only once - choose carefully</li>
+                <li>Once submitted, your vote cannot be changed</li>
+                <li>You will receive a receipt after voting</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

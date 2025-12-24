@@ -1,0 +1,220 @@
+{% extends 'voting/base.html' %}
+
+{% block title %}About Us - Online Voting Portal{% endblock %}
+
+{% block content %}
+<div style="max-width:800px; margin:50px auto; padding:30px; background-color:#fff; border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.1);">
+    <h1 style="text-align:center;">About Us</h1>
+    <p style="font-size:18px; line-height:1.6;">
+        We are committed to providing a secure, transparent, and user-friendly online voting system. 
+        Our mission is to empower every citizen to participate in democracy easily and safely from anywhere. 
+        The portal ensures one vote per user, secure data handling, and provides clear instructions for voters.
+    </p>
+</div>
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body p-4">
+                <h3 class="mb-3"><i class="bi bi-bullseye text-primary me-2"></i>Our Mission</h3>
+                <p class="text-muted">
+                    To empower every eligible citizen with the ability to exercise their democratic right 
+                    to vote through a secure, accessible, and user-friendly online platform that ensures 
+                    transparency and integrity in the electoral process.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body p-4">
+                <h3 class="mb-3"><i class="bi bi-eye-fill text-success me-2"></i>Our Vision</h3>
+                <p class="text-muted">
+                    To become India's most trusted online voting platform, increasing voter participation 
+                    and strengthening democracy by making voting accessible to all citizens, regardless 
+                    of their location or circumstances.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0 text-center"><i class="bi bi-star-fill me-2"></i>Our Core Values</h4>
+    </div>
+    <div class="card-body p-4">
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <i class="bi bi-shield-check text-primary" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Security</h5>
+                <p class="text-muted">End-to-end encryption and multi-factor authentication protect every vote.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Transparency</h5>
+                <p class="text-muted">Open processes and verifiable results build trust in the system.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-lock-fill text-warning" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Privacy</h5>
+                <p class="text-muted">Your vote remains confidential. We never reveal who you voted for.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-globe text-info" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Accessibility</h5>
+                <p class="text-muted">Vote from anywhere - home, office, or while traveling.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-people-fill text-danger" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Inclusivity</h5>
+                <p class="text-muted">Designed for all citizens, including those with disabilities.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-heart-fill text-danger" style="font-size: 3rem;"></i>
+                <h5 class="mt-3">Integrity</h5>
+                <p class="text-muted">Committed to fair, honest, and tamper-proof electoral processes.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Features -->
+<div class="card mb-4">
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0"><i class="bi bi-list-stars me-2"></i>Key Features</h4>
+    </div>
+    <div class="card-body p-4">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                    <div>
+                        <h5>OTP-Based Authentication</h5>
+                        <p class="text-muted">Secure login using your Voter ID and OTP sent to registered mobile number.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                    <div>
+                        <h5>Real-Time Verification</h5>
+                        <p class="text-muted">Instant verification of voter eligibility and voting status.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                    <div>
+                        <h5>Duplicate Vote Prevention</h5>
+                        <p class="text-muted">Advanced system prevents any voter from casting multiple votes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                    <div>
+                        <h5>Vote Receipt</h5>
+                        <p class="text-muted">Downloadable receipt with unique number for your records.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                    <div>
+                        <h5>24/7 Availability</h5>
+                        <p class="text-muted">Vote at any time during the voting period, from anywhere.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                    <i class="bi bi-check-circle-fill text-success me-3 fs-4"></i>
+                    <div>
+                        <h5>Mobile Responsive</h5>
+                        <p class="text-muted">Fully optimized for smartphones, tablets, and desktop computers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Technology & Security -->
+<div class="card mb-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0"><i class="bi bi-gear-fill me-2"></i>Technology & Security</h4>
+    </div>
+    <div class="card-body p-4">
+        <p class="mb-4">
+            Our platform is built using state-of-the-art technology to ensure the highest 
+            levels of security and reliability:
+        </p>
+        
+        <div class="row g-3">
+            <div class="col-md-6">
+                <div class="border rounded p-3">
+                    <i class="bi bi-shield-fill-check text-primary me-2"></i>
+                    <strong>256-bit Encryption:</strong> All data is encrypted end-to-end
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border rounded p-3">
+                    <i class="bi bi-key-fill text-success me-2"></i>
+                    <strong>Multi-Factor Authentication:</strong> OTP + Voter ID verification
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border rounded p-3">
+                    <i class="bi bi-database-fill text-warning me-2"></i>
+                    <strong>Secure Database:</strong> Distributed and encrypted storage
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border rounded p-3">
+                    <i class="bi bi-file-earmark-text text-info me-2"></i>
+                    <strong>Audit Trail:</strong> Complete logging for verification
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border rounded p-3">
+                    <i class="bi bi-clipboard-check text-danger me-2"></i>
+                    <strong>Regular Security Audits:</strong> Tested by independent experts
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="border rounded p-3">
+                    <i class="bi bi-speedometer2 text-primary me-2"></i>
+                    <strong>High Performance:</strong> Fast and reliable voting process
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact -->
+<div class="card" style="background: linear-gradient(135deg, #fff5e6 0%, #ffffff 50%, #e6ffe6 100%);">
+    <div class="card-body p-5 text-center">
+        <h3 class="mb-3"><i class="bi bi-envelope-fill text-primary me-2"></i>Get in Touch</h3>
+        <p class="text-muted mb-4">Have questions or need assistance? We're here to help!</p>
+        
+        <div class="row g-3 justify-content-center">
+            <div class="col-md-5">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="bi bi-envelope text-primary"></i>
+                    <p class="mb-0 mt-2"><strong>Email:</strong><br>support@votingportal.gov.in</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="bg-white rounded p-3 shadow-sm">
+                    <i class="bi bi-telephone text-success"></i>
+                    <p class="mb-0 mt-2"><strong>Helpline:</strong><br>1800-XXX-XXXX (Toll Free)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
